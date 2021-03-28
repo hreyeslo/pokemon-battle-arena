@@ -1,9 +1,9 @@
+import { createApiServer } from '@api/server';
 import { apiConfig } from "@api/config";
-import createServer from './server';
 
-const server = createServer();
+const server = createApiServer();
 
-console.log(apiConfig)
+// TODO: add app
 
 server.listen(+apiConfig.PORT, '0.0.0.0', (err, address) => {
 	if (err) throw err;

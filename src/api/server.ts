@@ -1,12 +1,12 @@
-import { apiConfig } from '@api/config';
 import fastify from 'fastify';
 
-import healthHandler from './modules/health/routes';
-import productsHandler from './modules/products/routes';
+import productsHandler from '@api/modules/products/routes';
+import healthHandler from '@api/modules/health/routes';
+import { apiConfig } from '@api/config';
 
 require('./plugins/db');
 
-function createServer() {
+export const createApiServer = () => {
 	const server = fastify();
 	server.register(require('fastify-cors'));
 
@@ -42,5 +42,3 @@ function createServer() {
 
 	return server;
 }
-
-export default createServer;
