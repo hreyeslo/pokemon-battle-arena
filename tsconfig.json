@@ -1,38 +1,40 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "allowJs": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "rootDir": "./",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "outDir": "build",
-    "baseUrl": "./src",
-    "noImplicitAny": false,
-    "lib": [
-      "es6"
-    ],
-    "plugins": [
-      {
-        "transform": "@zerollup/ts-transform-paths",
-      }
-    ],
-    "paths": {
-      "@api/config": [
-        "api/config/config"
-      ],
-      "@api/*": [
-        "api/*"
-      ],
-      "@app/*": [
-        "app/*"
-      ]
-    }
-  }
+	"compilerOptions": {
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"target": "es6",
+		"allowJs": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"rootDir": "./",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"outDir": "build",
+		"baseUrl": "./",
+		"noImplicitAny": false,
+		"jsx": "react",
+		"lib": [
+			"es6",
+			"dom"
+		],
+		"plugins": [
+			{
+				"transform": "@zerollup/ts-transform-paths",
+			}
+		],
+		"paths": {
+			"@api/config": [
+				"src/api/config/config"
+			],
+			"@api/*": [
+				"src/api/*"
+			],
+			"@app/*": [
+				"src/app/*"
+			]
+		}
+	}
 }

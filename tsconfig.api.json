@@ -1,14 +1,15 @@
 {
-  "extends": "./tsconfig.json",
-  "include": [
-    "src/api"
-  ],
-  "exclude": [
-    "./jest.config.js",
-    "./node_modules",
-    "./coverage",
-    "./src/app",
-    "./build",
-    "./test",
-  ]
+	"extends": "./tsconfig.json",
+	"include": [
+		"src/api",
+		"index.ts"
+	],
+	"exclude": [
+		"./jest.config.js",
+		"./node_modules",
+		"./coverage",
+		"./src/app",
+		"./build",
+		"./test"
+	]
 }
