@@ -1,6 +1,7 @@
 export const apiConfig = {
     //API
-    PORT: process.env.PORT,
+    PORT: process.env.API_PORT || process.env.PORT,
+		PREFIX: '/api',
     // MONGO
     MONGO_USER: process.env.MONGO_USER,
     MONGO_PASSWORD: process.env.MONGO_PASSWORD,

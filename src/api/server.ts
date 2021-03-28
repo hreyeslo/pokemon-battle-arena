@@ -32,8 +32,8 @@ export const createApiServer = () => {
 		}
 	});
 
-	server.register(healthHandler, { prefix: '/health' });
-	server.register(productsHandler, { prefix: '/product' });
+	server.register(healthHandler, { prefix: `${apiConfig.PREFIX}/health` });
+	server.register(productsHandler, { prefix: `${apiConfig.PREFIX}/product` });
 
 	server.setErrorHandler((error, req, res) => {
 		req.log.error(error.toString());
