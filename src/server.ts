@@ -1,12 +1,10 @@
+import { apiConfig } from '@api/config';
 import fastify from 'fastify';
-
-require('dotenv').config();
-require('./plugins/db');
 
 import healthHandler from './modules/health/routes';
 import productsHandler from './modules/products/routes';
 
-const PORT = process.env.PORT || '3000';
+require('./plugins/db');
 
 function createServer() {
 	const server = fastify();
@@ -22,7 +20,7 @@ function createServer() {
 				version: '0.1.0'
 			},
 			servers: [
-				{ url: `http://localhost:${PORT}`, description: 'development' },
+				{ url: `http://localhost:${apiConfig.PORT}`, description: 'development' },
 				{
 					url: 'https://<production-url>',
 					description: 'production'
