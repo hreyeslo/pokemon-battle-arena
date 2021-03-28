@@ -8,7 +8,9 @@ require('./plugins/db');
 
 export const createApiServer = () => {
 	const server = fastify();
-	server.register(require('fastify-cors'));
+	server.register(require('fastify-cors'), {
+		origin: "https://pokemon-battle-arena.herokuapp.com"
+	});
 
 	server.register(require('fastify-oas'), {
 		routePrefix: '/docs',
