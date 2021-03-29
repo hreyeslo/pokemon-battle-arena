@@ -1,4 +1,4 @@
-import Product from '../modules/products/entity';
+import Product from '@api/modules/products/entity';
 
 export const getAllProducts = async () => {
 	try {
@@ -26,7 +26,7 @@ export const createProduct = async (data) => {
 
 export const updateProduct = async (id, data) => {
 	try {
-		return await Product.updateOne({_id: id}, data);
+		return await Product.updateOne({ _id: id }, data);
 	} catch (err) {
 		throw err;
 	}
@@ -34,7 +34,7 @@ export const updateProduct = async (id, data) => {
 
 export const deleteProduct = async (id) => {
 	try {
-		return await Product.deleteOne({_id: id});
+		return await Product.deleteOne({ _id: id });
 	} catch (err) {
 		throw err;
 	}

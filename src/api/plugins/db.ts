@@ -1,4 +1,4 @@
-import { apiConfig } from "@api/config";
+import { apiConfig } from "@api/core/config";
 
 const mongoose = require('mongoose');
 

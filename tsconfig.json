@@ -26,9 +26,6 @@
 			}
 		],
 		"paths": {
-			"@api/config": [
-				"src/api/config/config"
-			],
 			"@api/*": [
 				"src/api/*"
 			],
