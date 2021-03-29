@@ -1,4 +1,5 @@
 import { apiConfig } from "@api/core/config";
+import { Logger } from "@api/core/logger";
 
 const mongoose = require('mongoose');
 
@@ -11,9 +12,9 @@ const stringConnection = HOST === 'localhost' ? `mongodb://${HOST}:27017/${DATAB
 
 mongoose.connect(stringConnection, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
 	if (!err)
-		console.log('MongoDB connection successful.');
+		Logger.success('MongoDB connection successful\n');
 	else
-		console.log('Error in DB connection : ' + JSON.stringify(err, undefined, 2));
+		Logger.error('Error in DB connection : ' + JSON.stringify(err, undefined, 2));
 });
 
 module.exports = mongoose;

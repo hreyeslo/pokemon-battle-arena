@@ -1,25 +1,29 @@
-export interface Route {
-	controller: any;
-	path: string;
+export interface Controller {
+	new(...args: any[]): any;
 }
 
-export type Routes = Route[];
+export type Controllers = Controller[];
 
 export interface ControllerHashMap {
 	[key: string]: {
-		[key: string]: ControllerHashMapRegisty;
+		methods: {
+			[key: string]: ControllerHashMapRegisty;
+		};
+		path: string;
 	};
 }
 
 export interface ControllerHashMapRegisty {
 	config: RegisterDecoratorConfig;
-	method: () => void;
+	callback: () => void;
 }
 
 export interface RegisterDecoratorConfig {
-	method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+	type: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 	path?: string;
 	schema?: {
 		[key: string]: any;
 	};
 }
+
+export type LoggerCustomMethods = 'listening';

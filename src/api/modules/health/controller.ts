@@ -1,13 +1,15 @@
-import { Register } from '@api/core/decorators';
+import { Controller, Method } from '@api/core/decorators';
+import { Signale } from 'signale';
 
 import { getHealthSchema } from './schema';
 
+@Controller()
 export class HealthController {
 
-	constructor() { }
+	private _logger: Signale;
 
-	@Register({
-		method: 'GET',
+	@Method({
+		type: 'GET',
 		schema: getHealthSchema
 	})
 	getStatus(req, res) {

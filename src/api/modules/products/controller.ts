@@ -1,14 +1,16 @@
 import { getAllProducts, getOneProduct, createProduct, updateProduct, deleteProduct } from '@api/dao';
-import { Register } from '@api/core/decorators';
+import { Controller, Method } from '@api/core/decorators';
+import { Signale } from 'signale';
 
 import { listProductsSchema, deleteProductSchema } from './schema';
 
+@Controller()
 export class ProductController {
 
-	constructor() { }
+	private _logger: Signale;
 
-	@Register({
-		method: 'GET',
+	@Method({
+		type: 'GET',
 		schema: listProductsSchema
 	})
 	async getProductList(req, res) {
@@ -17,8 +19,8 @@ export class ProductController {
 		res.send(products);
 	}
 
-	@Register({
-		method: 'GET',
+	@Method({
+		type: 'GET',
 		path: '/:_id'
 	})
 	async getProduct(req, res) {
@@ -28,8 +30,8 @@ export class ProductController {
 		res.status(200).send(products);
 	}
 
-	@Register({
-		method: 'POST',
+	@Method({
+		type: 'POST',
 	})
 	async createProduct(req, res) {
 		req.log.info('Add products to db');
@@ -37,8 +39,8 @@ export class ProductController {
 		res.status(201).send(products);
 	}
 
-	@Register({
-		method: 'PUT',
+	@Method({
+		type: 'PUT',
 		path: '/:_id'
 	})
 	async updateProduct(req, res) {
@@ -48,8 +50,8 @@ export class ProductController {
 		res.status(200).send(products);
 	}
 
-	@Register({
-		method: 'DELETE',
+	@Method({
+		type: 'DELETE',
 		path: '/:_id',
 		schema: deleteProductSchema
 	})
