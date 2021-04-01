@@ -1,6 +1,6 @@
 import LanguageDetector from 'i18next-browser-languagedetector';
 import LocalStorageBackend from 'i18next-localstorage-backend';
-import { setAppLang } from '@app/redux/actions/app.actions';
+import { setAppI18n } from '@app/redux/actions/app.actions';
 import ChainedBackend from 'i18next-chained-backend';
 import { initReactI18next } from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
@@ -9,6 +9,8 @@ import { Languages } from '@app/redux/models';
 import i18next, { i18n } from 'i18next';
 import { Store } from 'redux';
 import { get } from 'lodash';
+
+const supportedLangs = (process.env.REACT_APP_SUPORTED_LANGS || '').trim().split('|');
 
 class ReduxI18nextConnector {
 
@@ -22,9 +24,10 @@ class ReduxI18nextConnector {
 		this._i18nInstance = i18next;
 		this._storeInstance = GlobalStore.getInstance();
 		this._lang = undefined;
+		this._storeInstance.dispatch(setAppI18n({ supported: supportedLangs as Languages[] }));
 	}
 
-	public init(statePath: string[] = ['appState', 'lang']) {
+	public init(statePath: string[] = ['appState', 'i18n', 'lang']) {
 		const { language } = this._i18nInstance;
 		this._storeInstance.subscribe(() => {
 			const newLang = get(this._storeInstance.getState(), statePath);
@@ -36,7 +39,7 @@ class ReduxI18nextConnector {
 				this._i18nInstance.changeLanguage(newLang);
 			}
 		})
-		this._storeInstance.dispatch(setAppLang(language as Languages));
+		this._storeInstance.dispatch(setAppI18n({ lang: language as Languages }));
 	}
 }
 
@@ -45,12 +48,12 @@ i18next
 	.use(LanguageDetector)
 	.use(initReactI18next)
 	.init({
-		supportedLngs: ['en-US', 'es-ES'],
-		fallbackLng: 'en-US',
+		supportedLngs: supportedLangs,
+		fallbackLng: process.env.REACT_APP_FALLBACK_LANG || 'en-US',
 		debug: false,
 		load: 'currentOnly',
 		defaultNS: 'app',
-		ns: ['app'],
+		ns: ['app', 'onboarding', 'arena'],
 		backend: {
 			backends: [LocalStorageBackend, HttpBackend],
 			backendOptions: [{

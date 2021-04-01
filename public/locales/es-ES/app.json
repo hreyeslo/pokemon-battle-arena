@@ -1,14 +1,3 @@
 {
-	"title": "Campo de batalla pokemon",
-	"lang": {
-		"name": "Idioma",
-		"es-ES": "Español",
-		"en-US": "Inglés"
-	},
-	"theming": {
-		"theme": "Tema",
-		"variant": "Variante",
-		"light": "Claro",
-		"dark": "Oscuro"
-	}
+	"title": "Campo de batalla pokemon"
 }

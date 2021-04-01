@@ -1,6 +1,6 @@
 export interface AppState {
 	theme: Theme;
-	lang?: Languages | undefined;
+	i18n?: I18n | undefined;
 	render?: RenderTypes | undefined;
 	player?: Player | undefined;
 }
@@ -8,6 +8,11 @@ export interface AppState {
 export interface Theme {
 	name: ThemeNames;
 	variant: ThemeVariants;
+}
+
+export interface I18n {
+	lang: Languages;
+	supported: Languages[];
 }
 
 export interface Player {

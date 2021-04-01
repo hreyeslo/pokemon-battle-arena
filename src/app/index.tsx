@@ -8,13 +8,11 @@ import '@app/scss/styles.scss';
 import '@app/i18n/config';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Provider store={GlobalStore.getInstance()}>
-			<Suspense fallback="loading">
-				<App />
-			</Suspense>
-		</Provider>
-	</React.StrictMode>,
+	<Provider store={GlobalStore.getInstance()}>
+		<Suspense fallback="loading">
+			<App />
+		</Suspense>
+	</Provider>,
 	document.getElementById('root')
 );
 

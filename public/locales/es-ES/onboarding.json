@@ -1,0 +1,12 @@
+{
+	"langs": {
+		"en-US": "Inglés",
+		"es-ES": "Español"
+	},
+	"theming": {
+		"theme": "Tema",
+		"variant": "Variante",
+		"light": "Claro",
+		"dark": "Oscuro"
+	}
+}
