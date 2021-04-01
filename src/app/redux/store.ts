@@ -1,20 +1,35 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, Store } from 'redux';
 import { RootStore } from '@app/redux/models';
 import { merge } from 'lodash';
 
 import { initialAppState, appReducer } from '@app/redux/reducers/app.reducer';
 
-const _initialState: RootStore = {
-	appState: initialAppState
-};
+export class GlobalStore {
 
-const _reducers = {
-	appState: appReducer
-};
+	private static _instance: Store;
 
-export const initStore = (initialState: Partial<RootStore> = {}) => createStore(
-	combineReducers(_reducers),
-	merge({}, _initialState, initialState),
-	composeWithDevTools()
-);
+	private static readonly _initialState: RootStore = {
+		appState: initialAppState
+	};
+
+	private static readonly _reducers = {
+		appState: appReducer
+	};
+
+	constructor(initialState: Partial<RootStore> = {}) {
+		GlobalStore._instance = createStore(
+			combineReducers(GlobalStore._reducers),
+			merge({}, GlobalStore._initialState, initialState),
+			composeWithDevTools()
+		)
+	}
+
+	public static getInstance(initialState: Partial<RootStore> = {}): Store {
+		if (!GlobalStore._instance) {
+			new GlobalStore(initialState);
+		}
+		return GlobalStore._instance;
+	}
+
+}
