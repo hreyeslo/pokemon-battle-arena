@@ -1,3 +1,14 @@
 {
-	"title": "Pokemon battle arena"
+	"title": "Pokemon battle arena",
+	"lang": {
+		"name": "Language",
+		"es-ES": "Spanish",
+		"en-US": "English"
+	},
+	"theming": {
+		"theme": "Theme",
+		"variant": "Variant",
+		"light": "Light",
+		"dark": "Dark"
+	}
 }

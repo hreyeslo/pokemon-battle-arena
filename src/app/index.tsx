@@ -2,18 +2,14 @@ import reportWebVitals from './reportWebVitals';
 import { GlobalStore } from '@app/redux/store';
 import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
+import App from '@app/components/app';
 import ReactDOM from 'react-dom';
-import App from './App';
-
-import './index.scss';
-
+import '@app/scss/styles.scss';
 import '@app/i18n/config';
-
-const store = GlobalStore.getInstance();
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
+		<Provider store={GlobalStore.getInstance()}>
 			<Suspense fallback="loading">
 				<App />
 			</Suspense>

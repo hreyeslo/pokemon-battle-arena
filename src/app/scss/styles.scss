@@ -1,0 +1,16 @@
+$font-path: "/assets/fonts/" !default;
+
+$icons-path: "/assets/icons/" !default;
+
+$images-path: "/assets/images/" !default;
+
+@use './01_settings/settings' with (
+	$font-path: $font-path,
+	$icons-path: $icons-path,
+	$images-path: $images-path
+);
+@use './03_generic/generic';
+@use './04_elements/elements';
+@use './05_objects/objects';
+@use './06_themes/default';
+@use './06_themes/custom';

@@ -1,14 +1,26 @@
 export interface AppState {
 	theme: Theme;
-	lang?: string;
+	lang?: Languages | undefined;
+	render?: RenderTypes | undefined;
+	player?: Player | undefined;
 }
 
 export interface Theme {
-	name: string;
+	name: ThemeNames;
 	variant: ThemeVariants;
 }
 
+export interface Player {
+	alias: string;
+}
+
+export type ThemeNames = 'default' | 'custom';
+
 export type ThemeVariants = 'light' | 'dark';
+
+export type Languages = 'en-US' | 'es-ES';
+
+export type RenderTypes = 'html' | 'canvas';
 
 // Global store definitions
 export interface CustomAction {
@@ -16,6 +28,6 @@ export interface CustomAction {
 	payload?: any;
 }
 
-export interface RootStore {
+export interface RootState {
 	appState: AppState;
 }

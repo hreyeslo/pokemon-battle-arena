@@ -1,0 +1,16 @@
+@use '../02_tools/tools';
+
+$name: "custom";
+
+$light: (
+  primary-color: #546e7a
+);
+
+$dark: (
+  primary-color: #29434e,
+  button-color: #ffffff,
+  button-background-color: #161616,
+  button-background-color-hover: darken(#161616, 5%)
+);
+
+@include tools.getTheme($name, $light, $dark);

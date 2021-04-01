@@ -1,5 +1,5 @@
 
-import { AppState, CustomAction } from '@app/redux/models';
+import { AppState, CustomAction, ThemeNames, ThemeVariants } from '@app/redux/models';
 import { REDUX_CONSTANTS } from '@app/redux/constants';
 
 export const initialAppState: AppState = {
@@ -17,6 +17,15 @@ export const appReducer = (state: AppState = initialAppState, { type, payload }:
 			return updateTheme(state, { variant: payload });
 		case REDUX_CONSTANTS.APP.SET_LANG:
 			return { ...state, lang: payload };
+		case REDUX_CONSTANTS.APP.SET_RENDER_MODE:
+			return { ...state, render: payload };
+		case REDUX_CONSTANTS.APP.SET_PLAYER:
+			return {
+				...state, player: {
+					...state.player,
+					...payload
+				}
+			};
 		default:
 			return state;
 	}
@@ -24,6 +33,6 @@ export const appReducer = (state: AppState = initialAppState, { type, payload }:
 
 // Utils
 
-const updateTheme = (state: AppState, update: { [key: string]: string }): AppState => {
+const updateTheme = (state: AppState, update: { [key: string]: ThemeNames | ThemeVariants }): AppState => {
 	return { ...state, theme: { ...state?.theme || initialAppState.theme, ...update } };
 };

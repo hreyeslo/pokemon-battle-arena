@@ -1,0 +1,17 @@
+// Colors
+$primary-color: #282c34;
+$button-color: #202129;
+$button-background-color: #f2f2f2;
+$button-background-color-hover: #e1e2e2;
+
+// Others
+$border-radius: 36px;
+
+// Default theme
+$default-theme: (
+  primary-color: $primary-color,
+  border-radius: $border-radius,
+  button-color: $button-color,
+  button-background-color: $button-background-color,
+	button-background-color-hover: $button-background-color-hover
+);

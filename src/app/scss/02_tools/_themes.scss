@@ -1,0 +1,29 @@
+@use '../01_settings/theme';
+@use "sass:map";
+
+@mixin getTheme($name, $lightTheme, $darkTheme) {
+  $variants: (
+    light: map.deep-merge(theme.$default-theme, $lightTheme),
+    dark: map.deep-merge(theme.$default-theme, $darkTheme)
+  );
+
+  :root {
+    &[theme="#{$name}"] {
+      @each $_variant, $_theme in $variants {
+        &[variant="#{$_variant}"] {
+          --theme-primary-color: #{map.get($_theme, "primary-color")};
+          --theme-border-radius: #{map.get($_theme, "border-radius")};
+          --theme-button-color: #{map.get($_theme, "button-color")};
+          --theme-button-background-color: #{map.get(
+              $_theme,
+              "button-background-color"
+            )};
+          --theme-button-background-color-hover: #{map.get(
+              $_theme,
+              "button-background-color-hover"
+            )};
+        }
+      }
+    }
+  }
+}

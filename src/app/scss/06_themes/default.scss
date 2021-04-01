@@ -1,0 +1,17 @@
+@use '../01_settings/theme';
+@use '../02_tools/tools';
+
+$name: "default";
+
+$light: (
+  primary-color: lighten(theme.$primary-color, 20%)
+);
+
+$dark: (
+  primary-color: theme.$primary-color,
+	button-color: #ffffff,
+  button-background-color: #416dea,
+  button-background-color-hover: darken(#416dea, 5%)
+);
+
+@include tools.getTheme($name, $light, $dark);

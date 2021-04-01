@@ -1,11 +1,11 @@
 import { setAppLang, setAppTheme, setAppThemeVariant } from '@app/redux/actions/app.actions';
+import { Languages, Theme, ThemeNames, ThemeVariants } from '@app/redux/models';
 import { selectAppTheme } from '@app/redux/selectors/app.selectors';
-import { Theme, ThemeVariants } from '@app/redux/models';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import logo from '@app/assets/images/logo.svg';
 import React, { useEffect } from 'react';
-import logo from './25.svg';
-import './App.scss';
+import './app.scss';
 
 const App = () => {
 
@@ -23,7 +23,7 @@ const App = () => {
 		}
 	}
 
-	const changeTheme = (event, name: string) => {
+	const changeTheme = (event, name: ThemeNames) => {
 		event.preventDefault();
 		dispatch(setAppTheme(name));
 	}
@@ -33,7 +33,7 @@ const App = () => {
 		dispatch(setAppThemeVariant(variation));
 	}
 
-	const changeLang = (event, lang: string) => {
+	const changeLang = (event, lang: Languages) => {
 		event.preventDefault();
 		dispatch(setAppLang(lang));
 	}
@@ -45,21 +45,21 @@ const App = () => {
 				<p>
 					{t('title')}
 				</p>
-				<div>
-					<span>Lang</span>
-					<div>
-						<button onClick={(e) => changeLang(e, 'es-ES')}>es-ES</button>
-						<button onClick={(e) => changeLang(e, 'en-US')}>en-US</button>
+				<div className={'App-container'}>
+					<span>{t('lang.name')}</span>
+					<div className={'button-container'}>
+						<button className={'button'} onClick={(e) => changeLang(e, 'es-ES')}>{t('lang.es-ES')}</button>
+						<button className={'button'} onClick={(e) => changeLang(e, 'en-US')}>{t('lang.en-US')}</button>
 					</div>
-					<span>Theme</span>
-					<div>
-						<button onClick={(e) => changeTheme(e, 'default')}>Default</button>
-						<button onClick={(e) => changeTheme(e, 'custom')}>Custom</button>
+					<span>{t('theming.theme')}</span>
+					<div className={'button-container'}>
+						<button className={'button'} onClick={(e) => changeTheme(e, 'default')}>Default</button>
+						<button className={'button'} onClick={(e) => changeTheme(e, 'custom')}>Custom</button>
 					</div>
-					<span>Variant</span>
-					<div>
-						<button onClick={(e) => changeThemeVariation(e, 'light')}>Light</button>
-						<button onClick={(e) => changeThemeVariation(e, 'dark')}>Dark</button>
+					<span>{t('theming.variant')}</span>
+					<div className={'button-container'}>
+						<button className={'button'} onClick={(e) => changeThemeVariation(e, 'light')}>{t('theming.light')}</button>
+						<button className={'button'} onClick={(e) => changeThemeVariation(e, 'dark')}>{t('theming.dark')}</button>
 					</div>
 				</div>
 			</header>
