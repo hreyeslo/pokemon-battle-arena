@@ -15,6 +15,8 @@ export const appReducer = (state: AppState = initialAppState, { type, payload }:
 			return updateTheme(state, { name: payload });
 		case REDUX_CONSTANTS.APP.SET_THEME_VARIANT:
 			return updateTheme(state, { variant: payload });
+		case REDUX_CONSTANTS.APP.SET_LANG:
+			return { ...state, lang: payload };
 		default:
 			return state;
 	}
