@@ -1,5 +1,6 @@
 export interface AppState {
 	theme: Theme;
+	lang?: string;
 }
 
 export interface Theme {

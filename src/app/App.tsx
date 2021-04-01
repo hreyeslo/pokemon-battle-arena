@@ -1,14 +1,16 @@
-import { setAppTheme, setAppThemeVariant } from '@app/redux/actions/app.actions';
+import { setAppLang, setAppTheme, setAppThemeVariant } from '@app/redux/actions/app.actions';
 import { selectAppTheme } from '@app/redux/selectors/app.selectors';
 import { Theme, ThemeVariants } from '@app/redux/models';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
+import logo from './25.svg';
 import './App.scss';
 
 const App = () => {
 
 	const dispatch = useDispatch();
+	const { t } = useTranslation('app');
 	const appTheme = useSelector(selectAppTheme);
 
 	useEffect(() => setThemeAttributes(appTheme), [appTheme.name, appTheme.variant]);
@@ -31,14 +33,24 @@ const App = () => {
 		dispatch(setAppThemeVariant(variation));
 	}
 
+	const changeLang = (event, lang: string) => {
+		event.preventDefault();
+		dispatch(setAppLang(lang));
+	}
+
 	return (
 		<div className="App">
 			<header className="App-header">
 				<img src={logo} className="App-logo" alt="logo" />
 				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
+					{t('title')}
 				</p>
 				<div>
+					<span>Lang</span>
+					<div>
+						<button onClick={(e) => changeLang(e, 'es-ES')}>es-ES</button>
+						<button onClick={(e) => changeLang(e, 'en-US')}>en-US</button>
+					</div>
 					<span>Theme</span>
 					<div>
 						<button onClick={(e) => changeTheme(e, 'default')}>Default</button>

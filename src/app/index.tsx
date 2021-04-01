@@ -1,24 +1,25 @@
 import reportWebVitals from './reportWebVitals';
-import { initStore } from '@app/redux/store';
+import { GlobalStore } from '@app/redux/store';
+import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import React from 'react';
 import App from './App';
 
 import './index.scss';
 
-const store = initStore();
+import '@app/i18n/config';
+
+const store = GlobalStore.getInstance();
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<Suspense fallback="loading">
+				<App />
+			</Suspense>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
