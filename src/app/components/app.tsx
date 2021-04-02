@@ -4,7 +4,7 @@ import Onboarding from '@app/components/onboarding/onboarding';
 import Arena from '@app/components/arena/arena';
 import { useTranslation } from 'react-i18next';
 import logo from '@app/assets/images/logo.svg';
-import { Theme } from '@app/redux/models';
+import { Theme } from '@app/redux/models/app.model';
 import { useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import './app.scss';

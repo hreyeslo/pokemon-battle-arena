@@ -4,8 +4,8 @@ import { setAppI18n } from '@app/redux/actions/app.actions';
 import ChainedBackend from 'i18next-chained-backend';
 import { initReactI18next } from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
-import { GlobalStore } from '@app/redux/store';
-import { Languages } from '@app/redux/models';
+import { StoreService } from '@app/redux/store';
+import { Languages } from '@app/redux/models/app.model';
 import i18next, { i18n } from 'i18next';
 import { Store } from 'redux';
 import { get } from 'lodash';
@@ -22,7 +22,7 @@ class ReduxI18nextConnector {
 
 	constructor(i18next: i18n) {
 		this._i18nInstance = i18next;
-		this._storeInstance = GlobalStore.getInstance();
+		this._storeInstance = StoreService;
 		this._lang = undefined;
 		this._storeInstance.dispatch(setAppI18n({ supported: supportedLangs as Languages[] }));
 	}

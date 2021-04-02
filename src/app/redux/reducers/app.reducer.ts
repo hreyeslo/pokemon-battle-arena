@@ -1,5 +1,5 @@
-
-import { AppState, CustomAction, ThemeNames, ThemeVariants } from '@app/redux/models';
+import { AppState, ThemeNames, ThemeVariants } from '@app/redux/models/app.model';
+import { CustomAction } from '@app/redux/models/common.model';
 import { REDUX_CONSTANTS } from '@app/redux/constants';
 
 export const initialAppState: AppState = {
@@ -19,15 +19,6 @@ export const appReducer = (state: AppState = initialAppState, { type, payload }:
 			return {
 				...state, i18n: {
 					...state.i18n,
-					...payload
-				}
-			};
-		case REDUX_CONSTANTS.APP.SET_RENDER_MODE:
-			return { ...state, render: payload };
-		case REDUX_CONSTANTS.APP.SET_PLAYER:
-			return {
-				...state, player: {
-					...state.player,
 					...payload
 				}
 			};

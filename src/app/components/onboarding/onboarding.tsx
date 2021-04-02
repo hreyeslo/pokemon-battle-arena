@@ -1,7 +1,7 @@
 
 import { setAppI18n, setAppTheme, setAppThemeVariant } from '@app/redux/actions/app.actions';
 import { selectAppLang, selectAppSupportedLangs } from '@app/redux/selectors/app.selectors';
-import { Languages, ThemeNames, ThemeVariants } from '@app/redux/models';
+import { Languages, ThemeNames, ThemeVariants } from '@app/redux/models/app.model';
 import { Wizard, Steps, Step, WithWizard } from 'react-albus';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
