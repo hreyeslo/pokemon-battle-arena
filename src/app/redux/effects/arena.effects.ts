@@ -1,15 +1,15 @@
 import { setComDataKO, setComDataOK, setPlayerDataKO, setPlayerDataOK } from '@app/redux/actions/arena.actions';
 import { PokemonList, PokemonResult } from '@app/redux/models/arena.model';
+import { PokeApiService } from '@app/services/pokeapi.service';
 import { REDUX_CONSTANTS } from '@app/redux/constants';
 import { Pokemon } from '@app/models/pokeapi.model';
 import { put, takeEvery } from 'redux-saga/effects';
 import { getRandomNumber } from '@app/utils/utils';
-import { PokeApi } from '@app/services/pokeapi';
 
 function* fetchRandomPokemon() {
 	try {
 
-		const { count, results }: PokemonList = yield PokeApi.getPokemonsList({
+		const { count, results }: PokemonList = yield PokeApiService.getPokemonsList({
 			offset: 0,
 			limit: -1
 		});
@@ -19,7 +19,7 @@ function* fetchRandomPokemon() {
 		const playerPokemonRef: PokemonResult = results[playerPokemonIndex];
 		const comPokemonRef: PokemonResult = results[comPokemonIndex];
 
-		const pokemons: Pokemon[] = yield PokeApi.resource([playerPokemonRef.url, comPokemonRef.url]);
+		const pokemons: Pokemon[] = yield PokeApiService.resource([playerPokemonRef.url, comPokemonRef.url]);
 
 		yield put(setPlayerDataOK(pokemons[0]));
 		yield put(setComDataOK({ name: 'COM', pokemon: pokemons[1] }));

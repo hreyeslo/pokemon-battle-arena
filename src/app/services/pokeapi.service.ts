@@ -25,4 +25,4 @@ class PokeApiServiceManager {
 
 }
 
-export const PokeApi = PokeApiServiceManager.getInstance();
+export const PokeApiService = PokeApiServiceManager.getInstance();

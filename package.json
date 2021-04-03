@@ -20,6 +20,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koale/useworker": "^4.0.1",
+    "@shopify/react-web-worker": "^1.3.3",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "fastify": "^3.14.1",
     "fastify-cors": "^5.2.0",
