@@ -1,10 +1,10 @@
 import { setComDataKO, setComDataOK, setPlayerDataKO, setPlayerDataOK } from '@app/redux/actions/arena.actions';
 import { PokemonList, PokemonResult } from '@app/redux/models/arena.model';
-import { PokeApiService } from '@app/services/pokeapi.service';
+import { PokeApiService } from '@app/shared/services/pokeapi.service';
+import { getRandomNumber } from '@app/shared/utils/randoms';
+import { Pokemon } from '@app/shared/models/pokeapi.model';
 import { REDUX_CONSTANTS } from '@app/redux/constants';
-import { Pokemon } from '@app/models/pokeapi.model';
 import { put, takeEvery } from 'redux-saga/effects';
-import { getRandomNumber } from '@app/utils/utils';
 
 function* fetchRandomPokemon() {
 	try {

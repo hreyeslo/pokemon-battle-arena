@@ -1,7 +1,7 @@
 import { Player, RenderTypes } from '@app/redux/models/arena.model';
 import { CustomAction } from '@app/redux/models/common.model';
+import { Pokemon } from '@app/shared/models/pokeapi.model';
 import { REDUX_CONSTANTS } from '@app/redux/constants';
-import { Pokemon } from '@app/models/pokeapi.model';
 
 export const setRenderMode = (payload: RenderTypes): CustomAction => ({ type: REDUX_CONSTANTS.ARENA.SET_RENDER_MODE, payload });
 export const setPlayerName = (payload: string): CustomAction => ({ type: REDUX_CONSTANTS.ARENA.SET_PLAYER_NAME, payload });

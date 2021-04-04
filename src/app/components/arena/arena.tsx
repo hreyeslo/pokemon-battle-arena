@@ -1,8 +1,6 @@
 
 import { setRandomPokemons } from '@app/redux/actions/arena.actions';
-import { WorkerService } from '@app/services/worker.service';
-import { WorkerList } from '@app/models/worker.model';
-import { useWorker } from '@koale/useworker';
+import { WorkerService } from '@app/shared/services/worker.service';
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import './arena.scss';
@@ -10,13 +8,18 @@ import './arena.scss';
 const Arena = () => {
 
 	const dispatch = useDispatch();
-	const [worker] = useWorker(WorkerService(WorkerList.ARENA).hello)
+	const arenaWorker = WorkerService.getArenaWorkerInstance();
+	const arenaWorker2 = WorkerService.getArenaWorkerInstance();
 
-	dispatch(setRandomPokemons())
+	dispatch(setRandomPokemons());
+
 	const runSort = async () => {
-		const result = await worker('test');
+		const result = await arenaWorker.hello('from worker');
+		const result2 = await arenaWorker2.hello('from worker2');
 		console.log(result);
+		console.log(result2);
 	};
+
 	useEffect(() => {
 		runSort();
 	}, []);

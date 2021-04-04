@@ -20,8 +20,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@koale/useworker": "^4.0.1",
-    "@shopify/react-web-worker": "^1.3.3",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "fastify": "^3.14.1",
     "fastify-cors": "^5.2.0",
@@ -134,7 +132,8 @@
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.1",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "5.1.4"
+    "workbox-webpack-plugin": "5.1.4",
+    "workerize-loader": "^1.3.0"
   },
   "engines": {
     "node": "14.x"

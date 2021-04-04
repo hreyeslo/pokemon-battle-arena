@@ -1,4 +1,4 @@
-import { Pokemon } from '@app/models/pokeapi.model';
+import { Pokemon } from '@app/shared/models/pokeapi.model';
 
 export interface ArenaState {
 	render?: RenderTypes | undefined;
