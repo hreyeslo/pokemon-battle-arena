@@ -2,9 +2,11 @@
 import { setAppI18n, setAppTheme, setAppThemeVariant } from '@app/redux/actions/app.actions';
 import { selectAppLang, selectAppSupportedLangs } from '@app/redux/selectors/app.selectors';
 import { Languages, ThemeNames, ThemeVariants } from '@app/redux/models/app.model';
+import { setRandomPokemons } from '@app/redux/actions/arena.actions';
 import { Wizard, Steps, Step, WithWizard } from 'react-albus';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Line } from 'rc-progress';
 import React from 'react';
@@ -12,10 +14,11 @@ import './onboarding.scss';
 
 const Onboarding = () => {
 
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const { t } = useTranslation('onboarding');
-	const suportedLanguages = useSelector(selectAppSupportedLangs);
 	const selectedLang = useSelector(selectAppLang);
+	const suportedLanguages = useSelector(selectAppSupportedLangs);
 
 	const changeLang = (event, lang: Languages) => {
 		event.preventDefault();
@@ -32,10 +35,16 @@ const Onboarding = () => {
 		dispatch(setAppThemeVariant(variation));
 	}
 
+	const initBattle = (event) => {
+		event.preventDefault();
+		dispatch(setRandomPokemons());
+		history.push({ pathname: '/arena' });
+	}
+
 	return (
 		<Route
-			render={({ history, match: { url } }) => (
-				<Wizard history={history} basename={url} render={({ step, steps }) => (
+			render={({ _history, match: { url } }) => (
+				<Wizard history={_history} basename={url} render={({ step, steps }) => (
 					<div>
 						<Line
 							percent={(steps.indexOf(step) + 1) / steps.length * 100}
@@ -71,6 +80,7 @@ const Onboarding = () => {
 							</Step>
 							<Step id="player">
 								<h1 className="text-align-center">Ice King</h1>
+								<button className={'button'} onClick={(e) => initBattle(e)}>{t('battle.init')}</button>
 							</Step>
 						</Steps>
 						<WithWizard

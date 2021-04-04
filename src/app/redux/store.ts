@@ -59,4 +59,25 @@ class StoreServiceManager {
 
 }
 
+// export const loadState = () => {
+// 	try {
+// 		const serializedState = localStorage.getItem('app_state');
+// 		if (serializedState === null) {
+// 			return {};
+// 		}
+// 		return JSON.parse(serializedState);
+// 	} catch (err) {
+// 		return {};
+// 	}
+// };
+
+// export const saveState = (state: RootState) => {
+// 	try {
+// 		const serializedState = JSON.stringify(state);
+// 		localStorage.setItem('app_state', serializedState);
+// 	} catch {
+// 		// ignore write errors
+// 	}
+// };
+
 export const StoreService = StoreServiceManager.getInstance();

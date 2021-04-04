@@ -365,19 +365,20 @@ module.exports = function (webpackEnv) {
 				// Disable require.ensure as it's not a standard language feature.
 				{ parser: { requireEnsure: false } },
 				{
+					test: /\.worker\.(js|mjs|jsx|ts|tsx)$/,
+					use: [
+						{
+							loader: 'workerize-loader',
+							options: {}
+						}
+					]
+				},
+				{
 					// "oneOf" will traverse all following loaders until one will
 					// match the requirements. When no loader matches it will fall
 					// back to the "file" loader at the end of the loader list.
 					oneOf: [
-						{
-							test: /\.worker\.(js|mjs|jsx|ts|tsx)$/,
-							use: [
-								{
-									loader: 'workerize-loader',
-									options: {}
-								}
-							]
-						},
+
 						// TODO: Merge this config once `image/avif` is in the mime-db
 						// https://github.com/jshttp/mime-db
 						{

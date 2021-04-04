@@ -1,6 +1,6 @@
 import { WorkerList, ArenaWorkerDef } from '@app/shared/models/worker.model';
 
-import * as ArenaWorker from '@app/shared/workers/arena.worker.js';
+import * as ArenaWorker from '@app/shared/workers/arena.worker';
 
 class WorkerServiceManager {
 
@@ -14,7 +14,7 @@ class WorkerServiceManager {
 		}
 	}
 
-	public static getInstance<T>(name: WorkerList, worker: T): T {
+	public static getInstance<T>(name: WorkerList, worker): T {
 		if (!WorkerServiceManager._instance) {
 			WorkerServiceManager._instance = new WorkerServiceManager();
 		}

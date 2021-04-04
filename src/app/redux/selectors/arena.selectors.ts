@@ -5,4 +5,11 @@ import { createSelector } from 'reselect'
 const arenaState = (state: RootState): ArenaState => state.arenaState;
 
 export const selectArenaRenderMode = createSelector(arenaState, ({ render }): RenderTypes | undefined => render);
-export const selectArenaPlayer = (type: PlayerTypes) => createSelector(arenaState, ({ players }): Player | undefined => players && players[type]);
+export const selectArenaPlayers = createSelector(arenaState, ({ players }): Players | undefined => players);
+export const selectArenaPlayer = (type: PlayerTypes) => createSelector(selectArenaPlayers, (players): Player | undefined => players && players[type]);
+
+export const SelectBattleData = createSelector(
+	selectArenaRenderMode,
+	selectArenaPlayers,
+	(renderMode, players) => ({ renderMode, players })
+)

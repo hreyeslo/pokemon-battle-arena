@@ -1,11 +1,11 @@
 import LanguageDetector from 'i18next-browser-languagedetector';
 import LocalStorageBackend from 'i18next-localstorage-backend';
 import { setAppI18n } from '@app/redux/actions/app.actions';
+import { Languages } from '@app/redux/models/app.model';
 import ChainedBackend from 'i18next-chained-backend';
 import { initReactI18next } from 'react-i18next';
-import HttpBackend from 'i18next-http-backend';
 import { StoreService } from '@app/redux/store';
-import { Languages } from '@app/redux/models/app.model';
+import HttpBackend from 'i18next-http-backend';
 import i18next, { i18n } from 'i18next';
 import { Store } from 'redux';
 import { get } from 'lodash';

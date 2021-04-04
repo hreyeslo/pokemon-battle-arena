@@ -8,5 +8,8 @@
 		"variant": "Variant",
 		"light": "Light",
 		"dark": "Dark"
+	},
+	"battle": {
+		"init": "Start pokemon battle"
 	}
 }

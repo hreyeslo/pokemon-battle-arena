@@ -1,10 +1,10 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { selectAppTheme } from '@app/redux/selectors/app.selectors';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Onboarding from '@app/components/onboarding/onboarding';
+import { Theme } from '@app/redux/models/app.model';
 import Arena from '@app/components/arena/arena';
 import { useTranslation } from 'react-i18next';
 import logo from '@app/assets/images/logo.svg';
-import { Theme } from '@app/redux/models/app.model';
 import { useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import './app.scss';
@@ -36,9 +36,6 @@ const App = () => {
 				<BrowserRouter>
 					<Switch>
 						<Route exact path="/">
-							<Redirect to="/onboarding" />
-						</Route>
-						<Route path="/onboarding">
 							<Onboarding />
 						</Route>
 						<Route path="/arena">
